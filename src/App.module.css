@@ -1,6 +1,24 @@
-.welcomeMessage {
-    margin: 120px auto;
-    width: 50%;
-    text-align: left;
-    font-size: 24px;
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    width: 90%;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.footer {
+    background-color: #F6F7F7;
+    padding: 2rem 0;
+    color: #4B5C68;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: right;
 }
