@@ -1,0 +1,50 @@
+.navbar {
+    background-color: #025FEB;
+    height: 60px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.links {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+}
+
+.link {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    height: 25px;
+    width: auto;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+.active {
+    font-weight: bold;
+} 
