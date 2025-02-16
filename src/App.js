@@ -1,16 +1,25 @@
+import { Switch, Route } from 'react-router-dom';
+import Schedule from './pages/Schedule';
+import Leaderboard from './pages/Leaderboard';
+import NotFound from './pages/NotFound';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 import style from "./App.module.css";
 
 function App() {
   return (
-    <div className={style.welcomeMessage}>
-      Hi there 👋, <br /><br />      
-      Welcome to your test task. <br /><br />
-      Before you begin make sure to read the README file from the repository to make sure that your environment is properly set up. <br /><br />
-      Also please make sure to read the challenge instructions carefully. We advice that you push your source code to the repository frequently to avoid any loss of work.<br />
-      Once you are ready to submit the work, just go back to the challenge instructions page and click the "Submit Challenge" button.<br /><br />      
-      Good Luck and Have Fun! 🤞<br /><br /><br /><br />
-      <em><strong>NOTE:</strong> This page is only a welcome message and you should overwrite this page with the actuall solution implementation.</em>
+    <div className={style.wrapper}>
+      <Navbar />
+      <main>
+        <Switch>
+          <Route exact path="/" component={Schedule} />
+          <Route path="/schedule" component={Schedule} />
+          <Route path="/leaderboard" component={Leaderboard} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
     </div>
   );
 }
