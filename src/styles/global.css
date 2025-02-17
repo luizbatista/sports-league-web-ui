@@ -4,3 +4,30 @@ h1 {
     text-align: center;
     margin: 60px 0 20px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #E4EDF2;
+    font-size: 12px;
+    color: #4B5C68;
+    text-align: left;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #E4EDF2;
+    height: 40px;
+}
+
+td {
+    font-size: 14px;
+    color: #4B5C68;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #E4EDF2;
+    height: 70px;
+}
+
+tr:nth-child(even) {
+    background-color: #F6F7F7;
+}
