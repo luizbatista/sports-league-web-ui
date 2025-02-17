@@ -101,6 +101,8 @@ class LeagueService {
                 stats[match.homeTeam].matchesPlayed++;
                 stats[match.homeTeam].goalsFor += match.homeTeamScore;
                 stats[match.homeTeam].goalsAgainst += match.awayTeamScore;
+                stats[match.homeTeam].goalDifference = stats[match.homeTeam].goalsFor - stats[match.homeTeam].goalsAgainst;
+                stats[match.awayTeam].goalDifference = stats[match.awayTeam].goalsFor - stats[match.awayTeam].goalsAgainst;
 
                 // Update away team statistics
                 stats[match.awayTeam].matchesPlayed++;
@@ -127,33 +129,54 @@ class LeagueService {
             }
         });
 
-        // Apply criterias to sort the leaderboard
-        return Object.values(stats).sort((a, b) => {
-            // First criterion: total points
-            if (b.points !== a.points) {
-                return b.points - a.points;
+        // Agrupa times com a mesma pontuação
+        const teamsByPoints = {};
+        Object.values(stats).forEach(team => {
+            if (!teamsByPoints[team.points]) {
+                teamsByPoints[team.points] = [];
             }
-
-            // Second criterion: head-to-head points
-            const h2hPointsA = a.headToHead[b.teamName] || 0;
-            const h2hPointsB = b.headToHead[a.teamName] || 0;
-            if (h2hPointsB !== h2hPointsA) {
-                return h2hPointsB - h2hPointsA;
-            }
-
-            // Second criterion: goal difference
-            if (a.goalDifference !== b.goalDifference) {
-                return b.goalDifference - a.goalDifference;
-            }
-
-            // Third criterion: goals scored
-            if (b.goalsFor !== a.goalsFor) {
-                return b.goalsFor - a.goalsFor;
-            }
-
-            // Last criterion: alphabetical order
-            return a.teamName.localeCompare(b.teamName);
+            teamsByPoints[team.points].push(team);
         });
+
+        // Ordena times dentro de cada grupo de pontos
+        Object.values(teamsByPoints).forEach(teams => {
+            if (teams.length > 1) {
+                teams.sort((a, b) => {
+                    // Calcula pontos totais head-to-head entre times empatados
+                    let h2hPointsA = 0;
+                    let h2hPointsB = 0;
+                    
+                    teams.forEach(opponent => {
+                        if (opponent !== a) {
+                            h2hPointsA += a.headToHead[opponent.teamName] || 0;
+                        }
+                        if (opponent !== b) {
+                            h2hPointsB += b.headToHead[opponent.teamName] || 0;
+                        }
+                    });
+
+                    if (h2hPointsB !== h2hPointsA) {
+                        return h2hPointsB - h2hPointsA;
+                    }
+
+                    // Se ainda houver empate, continua com os outros critérios
+                    if (b.goalDifference !== a.goalDifference) {
+                        return b.goalDifference - a.goalDifference;
+                    }
+
+                    if (b.goalsFor !== a.goalsFor) {
+                        return b.goalsFor - a.goalsFor;
+                    }
+
+                    return a.teamName.localeCompare(b.teamName);
+                });
+            }
+        });
+
+        // Monta a tabela final ordenada
+        return Object.entries(teamsByPoints)
+            .sort(([pointsA], [pointsB]) => Number(pointsB) - Number(pointsA))
+            .flatMap(([_, teams]) => teams);
     }
     
     /**
