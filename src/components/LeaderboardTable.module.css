@@ -1,0 +1,44 @@
+
+th.matchesPlayed, th.goalsFor, th.goalsAgainst, th.goalDifference, th.points {
+    text-align: center;
+    min-width: 40px;
+}
+
+th.goalDifference, td.goalDifference {
+    display: none;
+}
+
+td.teamName, td.points {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+td.matchesPlayed, td.goalsFor, td.goalsAgainst, td.goalDifference, td.points {
+    text-align: center;
+}
+
+td.points {
+    color: blue;
+}
+
+.flag {
+    width: 53px;
+    height: 37px;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+.teamName .flag {
+    margin-left: 1em;
+}
+
+@media (max-width: 500px) {
+    th.goalsFor, th.goalsAgainst,
+    td.goalsFor, td.goalsAgainst {
+        display: none;
+    }
+    th.goalDifference,
+    td.goalDifference {
+        display: table-cell;
+    }
+}
