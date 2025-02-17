@@ -43,7 +43,6 @@ class LeagueService {
      */    
     setMatches(matches) {
         this.matches = matches;
-        console.log(this.matches);
     }
 
     /**
