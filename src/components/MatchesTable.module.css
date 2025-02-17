@@ -1,0 +1,80 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #E4EDF2;
+    font-size: 12px;
+    color: #4B5C68;
+    text-align: left;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #E4EDF2;
+    height: 40px;
+}
+
+th.homeTeam {
+    text-align: right;
+}
+
+th.awayTeam {
+    text-align: left;
+}
+
+td {
+    font-size: 14px;
+    color: #4B5C68;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #E4EDF2;
+    height: 70px;
+}
+
+tr:nth-child(even) {
+    background-color: #F6F7F7;
+}
+
+td.homeTeam, td.awayTeam, td.score {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+td.homeTeam {
+    text-align: right;
+}
+
+td.awayTeam {
+    text-align: left;
+}
+
+td.score {
+    text-align: center;
+    min-width: 40px;
+}
+
+.flag {
+    width: 53px;
+    height: 37px;
+    vertical-align: middle;
+}
+
+.homeTeam .flag {
+    margin-left: 1em;
+}
+
+.awayTeam .flag {
+    margin-right: 1em;
+}
+
+@media (max-width: 750px) {
+    th.stadium,
+    td.stadium {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    th.date,
+    td.date {
+        display: none;
+    }
+}
