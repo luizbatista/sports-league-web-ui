@@ -1,6 +1,6 @@
 # Sport League Web UI
 
-Welcome to the Sport League Web UI project. The goal of the project is to build a browser based web frontend SPA that gets the data about match schedule/results from the backend and then computes leaderboard based on the rules explained in the challenge description.
+The goal of the project is to build a browser based web frontend SPA that gets the data about match schedule/results from the backend and then computes leaderboard based on the rules.
 
 ## Install Dependencies
 
@@ -24,8 +24,6 @@ After this you would be able to access backend at http://localhost:3001. To veri
 
 The response should be `{"success": true, "version": "1.0"}`
 
-**IMPORTANT:** If you need to change default backend port, make sure to revert them back to 3001 before submitting the solution as otherwise the grading system might not detect the backend server and you will lose points.
-
 ## Running Frontend Application
 
 The following command will run the SPA in local dev server:
@@ -43,9 +41,6 @@ In order to prepare production build you need to run:
 It is important to make sure that code can be built for production succesfully before submitting the solution.
 
 ## Run tests
-
-The test file to verify src/services/LeagueService.js is located at tests/leaderboard.test.js. Feel free to modify the code there in order to test your work.
-It is important to implement all methods on src/services/LeagueService.js and TO NOT CHANGE the interface of them.
 
 To run the tests just run this command. 
 
